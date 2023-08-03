@@ -1,15 +1,41 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div>
+    <img alt="Vue logo" src="./assets/logo.png" />
+    <!-- hello world is the component made here -->
+    <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
+    <h1>list of courses</h1>
+    <h4>number of course added {{ count }}</h4>
+
+    <CourseItem :courses="courses" @count-to-parent="addOne" />
+  </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+// import HelloWorld from "./components/HelloWorld.vue";
+import CourseItem from "./components/CourseItem.vue";
 
 export default {
   name: "App",
+  data() {
+    return {
+      courses: [
+        { id: 1, name: "react", location: "xyz" },
+        { id: 2, name: "react js", location: "xyz" },
+        { id: 3, name: "node js", location: "xyz" },
+      ],
+      count: 0,
+    };
+  },
   components: {
-    HelloWorld,
+    // using the hello world component here
+    // HelloWorld,
+    CourseItem,
+  },
+
+  methods: {
+    addOne() {
+      this.count + -1;
+    },
   },
 };
 </script>
